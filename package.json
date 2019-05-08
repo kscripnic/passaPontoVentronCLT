@@ -1,0 +1,25 @@
+{
+  "name": "passapontoventron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kscripnic/passaPontoVentron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kscripnic/passaPontoVentron/issues"
+  },
+  "homepage": "https://github.com/kscripnic/passaPontoVentron#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "mongoose": "^5.5.5",
+    "puppeteer": "^1.15.0"
+  }
+}
