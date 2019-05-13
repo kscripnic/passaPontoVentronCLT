@@ -4,6 +4,11 @@ const client = new Discord.Client();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI_PASS, { useNewUrlParser: true });
 const db = mongoose.connection;
+
+const Analytics = require('analytics-node');
+const analytics = new Analytics(process.env.WRITE_KEY);
+
+
 db.on('error', console.error.bind(console, 'connection error:'));
 
 const UserDb = mongoose.model('User', new mongoose.Schema({
@@ -60,6 +65,19 @@ client.on('message', async msg => {
             await browser.close();
 
             msg.reply('Ponto passado com sucesso!');
+
+
+            analytics.identify({
+                userId: msg.author.id,
+                traits: {
+                    name: user.userName
+                }
+            });
+
+            analytics.track({
+                userId: msg.author.id,
+                event: 'Passou ponto'
+            });
         } catch (error) {
             msg.reply('Ocorreu um erro ao passar seu ponto, tente novamente ou faça manualmente.');
             console.log(error);
