@@ -67,7 +67,7 @@ client.on('message', async msg => {
 
             msg.reply('Ponto passado com sucesso!');
 
-            await new AnalyticsDb({user: user}).save();
+            await new AnalyticsDb({ user: user, date: new Date() }).save();
         } catch (error) {
             msg.reply('Ocorreu um erro ao passar seu ponto, tente novamente ou faça manualmente.');
             console.log(error);
