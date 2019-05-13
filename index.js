@@ -5,16 +5,17 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI_PASS, { useNewUrlParser: true });
 const db = mongoose.connection;
 
-const Analytics = require('analytics-node');
-const analytics = new Analytics(process.env.WRITE_KEY);
-
-
 db.on('error', console.error.bind(console, 'connection error:'));
 
 const UserDb = mongoose.model('User', new mongoose.Schema({
     userName: String,
     password: String,
     id: Number
+}));
+
+const AnalyticsDb = mongoose.model('Analytics', new mongoose.Schema({
+    user: UserDb,
+    date: Date
 }));
 
 const puppeteer = require('puppeteer');
@@ -66,18 +67,7 @@ client.on('message', async msg => {
 
             msg.reply('Ponto passado com sucesso!');
 
-
-            analytics.identify({
-                userId: msg.author.id,
-                traits: {
-                    name: user.userName
-                }
-            });
-
-            analytics.track({
-                userId: msg.author.id,
-                event: 'Passou ponto'
-            });
+            await new AnalyticsDb({user: user}).save();
         } catch (error) {
             msg.reply('Ocorreu um erro ao passar seu ponto, tente novamente ou faça manualmente.');
             console.log(error);
