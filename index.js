@@ -14,7 +14,7 @@ const UserDb = mongoose.model('User', new mongoose.Schema({
 }));
 
 const AnalyticsDb = mongoose.model('Analytics', new mongoose.Schema({
-    user: UserDb,
+    user: mongoose.SchemaTypes.Mixed,
     date: Date
 }));
 
