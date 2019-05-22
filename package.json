@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kscripnic/passaPontoVentron.git"
+    "url": "git+https://github.com/lucas-ventron/passaPontoVentronCLT.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kscripnic/passaPontoVentron/issues"
+    "url": "https://github.com/lucas-ventron/passaPontoVentronCLT/issues"
   },
-  "homepage": "https://github.com/kscripnic/passaPontoVentron#readme",
+  "homepage": "https://github.com/lucas-ventron/passaPontoVentronCLT.git#readme",
   "dependencies": {
     "base-64": "^0.1.0",
     "discord.js": "11.4.2",
